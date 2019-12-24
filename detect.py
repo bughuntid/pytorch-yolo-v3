@@ -240,7 +240,7 @@ if __name__ ==  '__main__':
             im_id = i*batch_size + im_num
             objs = [classes[int(x[-1])] for x in output if int(x[0]) == im_id]
             print("{0:20s} predicted in {1:6.3f} seconds".format(image.split("/")[-1], (end - start)/batch_size))
-            print("{0:20s} {1:s}".format("Objects Detected:", " ".join(objs)))
+            print("{0:20s} {1:s}".format("Objects Detected:", " ".join(objs))\n)
             print("----------------------------------------------------------")
         i += 1
 
@@ -306,7 +306,7 @@ if __name__ ==  '__main__':
     end = time.time()
     
     print()
-    print("SUMMARY")
+    print("SUMMARY-nya")
     print("----------------------------------------------------------")
     print("{:25s}: {}".format("Task", "Time Taken (in seconds)"))
     print()
