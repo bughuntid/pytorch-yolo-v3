@@ -113,10 +113,10 @@ if __name__ ==  '__main__':
     classes = load_classes('data/coco.names') 
 
     #Set up the neural network
-    print("Loading network.....")
+    #print("Loading network.....")
     model = Darknet(args.cfgfile)
     model.load_weights(args.weightsfile)
-    print("Network successfully loaded")
+    #print("Network successfully loaded")
     
     model.net_info["height"] = args.reso
     inp_dim = int(model.net_info["height"])
@@ -239,9 +239,8 @@ if __name__ ==  '__main__':
         for im_num, image in enumerate(imlist[i*batch_size: min((i +  1)*batch_size, len(imlist))]):
             im_id = i*batch_size + im_num
             objs = [classes[int(x[-1])] for x in output if int(x[0]) == im_id]
-            print("{0:20s} predicted in {1:6.3f} seconds".format(image.split("/")[-1], (end - start)/batch_size))
-            print("{0:20s} {1:s}".format("Objects Detected:", "\n ".join(objs)))
-            print("----------------------------------------------------------")
+            print("{0:20s} {1:s}".format("", "\n ".join(objs)))
+            #print("----------------------------------------------------------")
         i += 1
 
         
@@ -305,18 +304,18 @@ if __name__ ==  '__main__':
     
     end = time.time()
     
-    print()
-    print("SUMMARY-nya")
-    print("----------------------------------------------------------")
-    print("{:25s}: {}".format("Task", "Time Taken (in seconds)"))
-    print()
-    print("{:25s}: {:2.3f}".format("Reading addresses", load_batch - read_dir))
-    print("{:25s}: {:2.3f}".format("Loading batch", start_det_loop - load_batch))
-    print("{:25s}: {:2.3f}".format("Detection (" + str(len(imlist)) +  " images)", output_recast - start_det_loop))
-    print("{:25s}: {:2.3f}".format("Output Processing", class_load - output_recast))
-    print("{:25s}: {:2.3f}".format("Drawing Boxes", end - draw))
-    print("{:25s}: {:2.3f}".format("Average time_per_img", (end - load_batch)/len(imlist)))
-    print("----------------------------------------------------------")
+    #print()
+    #print("SUMMARY-nya")
+    #print("----------------------------------------------------------")
+    #print("{:25s}: {}".format("Task", "Time Taken (in seconds)"))
+    #print()
+    #print("{:25s}: {:2.3f}".format("Reading addresses", load_batch - read_dir))
+    #print("{:25s}: {:2.3f}".format("Loading batch", start_det_loop - load_batch))
+    #print("{:25s}: {:2.3f}".format("Detection (" + str(len(imlist)) +  " images)", output_recast - start_det_loop))
+    #print("{:25s}: {:2.3f}".format("Output Processing", class_load - output_recast))
+    #print("{:25s}: {:2.3f}".format("Drawing Boxes", end - draw))
+    #print("{:25s}: {:2.3f}".format("Average time_per_img", (end - load_batch)/len(imlist)))
+    #print("----------------------------------------------------------")
 
     
     torch.cuda.empty_cache()
